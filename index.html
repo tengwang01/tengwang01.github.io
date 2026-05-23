@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="keywords" content="Teng Wang, Tsinghua University, LeapLab, Embodied AI, Medical Robotics, Robotic Ultrasound">
+	<meta name="description" content="Homepage of Teng Wang">
+	<link rel="shortcut icon" href="myIcon.ico">
+	<link rel="stylesheet" href="jemdoc.css" type="text/css">
+	<title>Teng Wang @ THU</title>
+	<style>
+		:root {
+			--accent: #8B5A2B;
+			--accent-light: #C49A6C;
+			--accent-pale: rgba(139, 90, 43, 0.18);
+			--accent-line: rgba(139, 90, 43, 0.32);
+			--accent-shadow: rgba(139, 90, 43, 0.18);
+		}
+
+		body {
+			line-height: 1.45;
+		}
+
+		#layout-content {
+			position: relative;
+		}
+
+		.hero-name,
+		.hero-role {
+			color: var(--accent);
+		}
+
+		.profile-table {
+			width: 100%;
+			border-collapse: collapse;
+		}
+
+		.profile-info {
+			width: 68%;
+			vertical-align: top;
+			padding-right: 24px;
+		}
+
+		.profile-photo-cell {
+			width: 260px;
+			text-align: center;
+			vertical-align: top;
+		}
+
+		.profile-photo {
+			width: 240px;
+			max-width: 100%;
+			border-radius: 4px;
+		}
+
+		.profile-links a {
+			display: inline-block;
+			margin-right: 8px;
+		}
+
+		.profile-links img {
+			height: 30px;
+			margin-bottom: -3px;
+		}
+
+		.section-heading {
+			position: relative;
+			display: block;
+			width: 100%;
+			box-sizing: border-box;
+			margin-top: 1.85em;
+			margin-bottom: 1em;
+			padding: 0 0 14px 0;
+			border: none;
+			background: transparent;
+			color: var(--accent);
+			font-size: 1.42em;
+			font-weight: 700;
+			line-height: 1.15;
+			letter-spacing: 0.01em;
+			text-shadow: none;
+			box-shadow: none;
+			transform-origin: left center;
+			overflow: visible;
+			transition:
+				transform 0.24s ease,
+				color 0.28s ease,
+				letter-spacing 0.28s ease,
+				text-shadow 0.28s ease;
+		}
+
+		.section-heading::before {
+			content: "";
+			position: absolute;
+			left: 0;
+			bottom: 0;
+			width: 72px;
+			height: 4px;
+			border-radius: 999px;
+			background: linear-gradient(90deg, var(--accent) 0%, var(--accent-light) 100%);
+			box-shadow: 0 8px 16px var(--accent-shadow);
+			transform-origin: left center;
+			transition: width 0.28s ease, transform 0.28s ease, box-shadow 0.28s ease;
+		}
+
+		.section-heading::after {
+			content: "";
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 1px;
+			height: 1px;
+			border-radius: 999px;
+			background: linear-gradient(90deg, var(--accent-line) 0%, var(--accent-pale) 36%, rgba(139, 90, 43, 0) 100%);
+			opacity: 1;
+			transition: opacity 0.28s ease;
+		}
+
+		.section-heading:hover,
+		.section-heading.section-focus {
+			color: var(--accent);
+			transform: translateX(2px);
+			letter-spacing: 0.015em;
+			text-shadow: 0 6px 18px var(--accent-shadow);
+		}
+
+		.section-heading:hover::before,
+		.section-heading.section-focus::before {
+			width: 156px;
+			box-shadow: 0 10px 18px var(--accent-shadow);
+			transform: scaleX(1.02);
+		}
+
+		.section-heading.section-active {
+			color: var(--accent);
+			transform: translateX(4px);
+			letter-spacing: 0.02em;
+			text-shadow: 0 8px 22px var(--accent-shadow);
+		}
+
+		.section-heading.section-active::before {
+			width: 220px;
+			box-shadow: 0 12px 22px var(--accent-shadow);
+			transform: scaleX(1.04);
+		}
+
+		.pub-note {
+			font-style: italic;
+			margin-top: -0.3em;
+		}
+
+		.pub-table,
+		.education-table {
+			width: 100%;
+			border-collapse: collapse;
+		}
+
+		.pub-table td,
+		.education-table td {
+			vertical-align: top;
+		}
+
+		.pub-image-cell,
+		.education-logo-cell {
+			width: 306px;
+			padding: 0 22px 22px 0;
+		}
+
+		.pub-image {
+			width: 285px;
+			max-width: 100%;
+			box-shadow: 4px 4px 8px #888;
+		}
+
+		.education-logo {
+			width: 230px;
+			max-width: 100%;
+			box-shadow: 4px 4px 8px #ffffff;
+		}
+
+		.pub-entry td,
+		.education-entry td {
+			padding-bottom: 28px;
+		}
+
+		.pub-category-row td {
+			padding: 8px 0 16px 0;
+		}
+
+		.pub-category {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 100%;
+			color: var(--accent);
+			font-size: 1.1em;
+			font-weight: 700;
+			letter-spacing: 0.12em;
+			text-transform: uppercase;
+		}
+
+		.pub-category::before,
+		.pub-category::after {
+			content: "";
+			flex: 1;
+			height: 1px;
+			border-radius: 999px;
+			background: var(--accent-line);
+		}
+
+		.pub-category::before {
+			margin-right: 16px;
+		}
+
+		.pub-category::after {
+			margin-left: 16px;
+		}
+
+		.award-list li,
+		.news-list li {
+			margin-top: 0.55em;
+		}
+
+		.visitor-map {
+			width: 50%;
+			min-width: 260px;
+			max-width: 420px;
+			height: auto;
+			margin: 16px auto 0 auto;
+			text-align: center;
+		}
+
+		@media (max-width: 720px) {
+			body {
+				padding-left: 22px;
+				padding-right: 22px;
+			}
+
+			.profile-table,
+			.profile-table tbody,
+			.profile-table tr,
+			.profile-table td,
+			.pub-table,
+			.pub-table tbody,
+			.pub-table tr,
+			.pub-table td,
+			.education-table,
+			.education-table tbody,
+			.education-table tr,
+			.education-table td {
+				display: block;
+				width: 100%;
+			}
+
+			.profile-info,
+			.profile-photo-cell,
+			.pub-image-cell,
+			.education-logo-cell {
+				width: 100%;
+				padding-right: 0;
+			}
+
+			.profile-photo-cell {
+				text-align: left;
+				margin-top: 14px;
+			}
+
+			.section-heading {
+				margin-top: 1.45em;
+				padding: 0 0 12px 0;
+				font-size: 1.2em;
+			}
+
+			.section-heading::before {
+				width: 56px;
+			}
+
+			.pub-image,
+			.education-logo {
+				width: min(100%, 285px);
+			}
+
+			.visitor-map {
+				width: 100%;
+				min-width: 0;
+			}
+		}
+	</style>
+</head>
+<body>
+<div id="layout-content" style="margin-top:25px">
+	<table class="profile-table">
+		<tbody>
+			<tr>
+				<td class="profile-info">
+					<div id="toptitle">
+						<h1 class="hero-name">Teng Wang</h1>
+					</div>
+					<h3 class="hero-role">Ph.D. Student</h3>
+					<p>
+						Department of Automation, Tsinghua University<br>
+						Beijing, China<br>
+						<br>
+						Email: t-wang25 [at] mails [dot] tsinghua [dot] edu [dot] cn
+					</p>
+					<p class="profile-links">
+						<a href="https://scholar.google.com/citations?hl=en&amp;tzom=-480&amp;user=yHtp8lUAAAAJ" target="_blank" rel="noopener"><img src="./pic/google_scholar.png" alt="Google Scholar"></a>
+						<a href="https://github.com/tengwang01" target="_blank" rel="noopener"><img src="./pic/github.jpg" alt="GitHub"></a>
+						<a href="https://x.com/tng_wang" target="_blank" rel="noopener"><img src="./pic/x.png" alt="X"></a>
+					</p>
+				</td>
+				<td class="profile-photo-cell">
+					<img class="profile-photo" src="./pic/tengwang.jpg" alt="Teng Wang">
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<h2 class="section-heading">Biography</h2>
+	<p>
+		I am a first-year Ph.D. student in the Department of Automation at <a href="https://www.tsinghua.edu.cn/en/" target="_blank" rel="noopener">Tsinghua University</a>, supervised by <a href="https://scholar.google.com.hk/citations?user=-P9LwcgAAAAJ&amp;hl=en" target="_blank" rel="noopener">Prof. Gao Huang</a> at <a href="https://www.leaplab.ai/" target="_blank" rel="noopener">LeapLab</a>. I work with lab members <a href="https://jianghaojun.github.io/" target="_blank" rel="noopener">Haojun Jiang</a>, <a href="https://chx-li.github.io/" target="_blank" rel="noopener">Chenxi Li</a>, and Diwen Wang.
+	</p>
+	<p>
+		My research interests include Embodied AI, Medical Robotics, and Robotic Ultrasound. Before that, I obtained my B.Eng. degree from Nankai University.
+	</p>
+
+	<h2 class="section-heading">News</h2>
+	<ul class="news-list">
+		<li>[05/2026] Won the Best Poster Award (1st/480) at YAC 2026.</li>
+		<li>[05/2026] One paper was early accepted by MICCAI 2026 (Top 9%).</li>
+		<li>[01/2026] One paper was accepted by ICRA 2026.</li>
+	</ul>
+
+	<h2 class="section-heading">Publications</h2>
+	<p class="pub-note">* indicates equal contribution.</p>
+	<table class="pub-table" id="tbPublications">
+		<tbody>
+			<tr class="pub-category-row">
+				<td colspan="2"><span class="pub-category">Preprint</span></td>
+			</tr>
+			<tr class="pub-entry">
+				<td class="pub-image-cell">
+					<img class="pub-image" src="./pub/UltraStar.png" alt="UltraStar">
+				</td>
+				<td>
+					<p><b>UltraStar: Semantic-Aware Star Graph Modeling for Echocardiography Navigation</b></p>
+					<p><b>Teng Wang*</b>, Haojun Jiang*, Chenxi Li, Diwen Wang, Yihang Tang, Zhenguo Sun, Yujiao Deng, Shiji Song, Gao Huang</p>
+					<p><em>Preprint</em></p>
+					<p>[<a href="https://arxiv.org/abs/2603.01461" target="_blank" rel="noopener">paper</a>]</p>
+				</td>
+			</tr>
+
+			<tr class="pub-category-row">
+				<td colspan="2"><span class="pub-category">Journal Papers</span></td>
+			</tr>
+			<tr class="pub-entry">
+				<td class="pub-image-cell">
+					<img class="pub-image" src="./pub/NC2026.png" alt="Autonomous carotid ultrasonography">
+				</td>
+				<td>
+					<p><b>Towards expert-level autonomous carotid ultrasonography with large-scale learning-based robotic system</b></p>
+					<p>Haojun Jiang*, Andrew Zhao*, Qian Yang*, Xiangjie Yan, <b>Teng Wang</b>, Yulin Wang, Ning Jia, Jiangshan Wang, Guokun Wu, Yang Yue, Shaqi Luo, Huanqian Wang, Ling Ren, Siming Chen, Pan Liu, Guocai Yao, Wenming Yang, Shiji Song, Xiang Li, Kunlun He, Gao Huang</p>
+					<p><em>Nature Communications 2025 (IF = 17.2)</em></p>
+					<p>This work was highlighted by the Chief Editor of <a href="https://www.nature.com/articles/s41551-025-01546-x" target="_blank" rel="noopener">Nature Biomedical Engineering in the October issue</a>&mdash;the ONLY one of four featured studies to be highlighted by the editor-in-chief, alongside a <em>Science</em> and two <em>Nature Medicine</em> articles.</p>
+					<p>[<a href="https://www.nature.com/articles/s41467-025-62865-w" target="_blank" rel="noopener">paper</a>] [<a href="https://github.com/LeapLabTHU/UltraBot" target="_blank" rel="noopener">code</a>]</p>
+				</td>
+			</tr>
+			<tr class="pub-entry">
+				<td class="pub-image-cell">
+					<img class="pub-image" src="./pub/PR2026.png" alt="UltraSeP">
+				</td>
+				<td>
+					<p><b>UltraSeP: Sequence-aware Pre-training for Echocardiography Probe Movement Guidance</b></p>
+					<p>Haojun Jiang, <b>Teng Wang</b>, Zhenguo Sun, Yulin Wang, Yang Yue, Yu Sun, Ning Jia, Meng Li, Shaqi Luo, Shiji Song, Gao Huang</p>
+					<p><em>Pattern Recognition 2026 (IF = 7.6)</em></p>
+					<p>[<a href="https://arxiv.org/abs/2408.15026" target="_blank" rel="noopener">paper</a>]</p>
+				</td>
+			</tr>
+
+			<tr class="pub-category-row">
+				<td colspan="2"><span class="pub-category">Conference Papers</span></td>
+			</tr>
+			<tr class="pub-entry">
+				<td class="pub-image-cell">
+					<img class="pub-image" src="./pub/VA-Adapter.png" alt="VA-Adapter">
+				</td>
+				<td>
+					<p><b>VA-Adapter: Adapting Ultrasound Foundation Model to Echocardiography Probe Guidance</b></p>
+					<p><b>Teng Wang*</b>, Haojun Jiang*, Yuxuan Wang, Zhenguo Sun, Shiji Song, Gao Huang</p>
+					<p><em>MICCAI 2026 Early Accept (Top 9%)</em></p>
+					<p>This work was presented at YAC 2026 and won the Best Poster Award (1st/480).</p>
+					<p>[<a href="https://arxiv.org/abs/2510.06809" target="_blank" rel="noopener">paper</a>] [<a href="https://github.com/LeapLabTHU/VA-Adapter" target="_blank" rel="noopener">code</a>]</p>
+				</td>
+			</tr>
+			<tr class="pub-entry">
+				<td class="pub-image-cell">
+					<img class="pub-image" src="./pub/UltraHiT.png" alt="UltraHiT">
+				</td>
+				<td>
+					<p><b>UltraHiT: A Hierarchical Transformer Architecture for Generalizable Internal Carotid Artery Robotic Ultrasonography</b></p>
+					<p><b>Teng Wang*</b>, Haojun Jiang*, Yuxuan Wang*, Zhenguo Sun, Xiangjie Yan, Xiang Li, Gao Huang</p>
+					<p><em>ICRA 2026</em></p>
+					<p>[<a href="https://arxiv.org/abs/2510.06809" target="_blank" rel="noopener">paper</a>] [<a href="https://ultrahit-thu.github.io/UltraHiT/" target="_blank" rel="noopener">project page</a>] [<a href="https://github.com/LeapLabTHU/UltraHiT" target="_blank" rel="noopener">code</a>]</p>
+				</td>
+			</tr>
+			<tr class="pub-entry">
+				<td class="pub-image-cell">
+					<img class="pub-image" src="./pub/ICMA2024.png" alt="ICMA 2024">
+				</td>
+				<td>
+					<p><b>Deep Reinforcement Learning-Based Swing Suppression Control for Unmanned Multirotor Transportation System</b></p>
+					<p><b>Teng Wang*</b>, Shunxuan Wang*, Yi Chai, Xiao Liang</p>
+					<p><em>ICMA 2024 Oral</em></p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<h2 class="section-heading">Awards</h2>
+	<ul class="award-list">
+		<li>2026 Youth Academic Annual Conference of Chinese Association of Automation (YAC) Best Poster Award (1st/480)</li>
+		<li>National Scholarship (Highest scholarship given by the government of China)</li>
+		<li>Outstanding Bachelor's Degree Graduates at Nankai University</li>
+		<li>Xing-Shen Chen Scholarship at Nankai University</li>
+		<li>Gold Award, 9th China International Internet+ Innovation and Entrepreneurship Competition</li>
+		<li>National Second Prize, National Undergraduate Electronic Design Contest (TI Cup), 2023</li>
+		<li>First Prize, 9th North China Five-Province Undergraduate Robotics Competition (Finals)</li>
+		<li>First Prize, 14th National Undergraduate Mathematics Competition</li>
+	</ul>
+
+	<h2 class="section-heading">Education</h2>
+	<table class="education-table">
+		<tbody>
+			<tr class="education-entry">
+				<td class="education-logo-cell">
+					<img class="education-logo" src="./education/Tsinghua.png" alt="Tsinghua University">
+				</td>
+				<td>
+					<p><b>Tsinghua University</b></p>
+					<p>Ph.D. Student, Department of Automation</p>
+					<p>Advisor: <a href="https://scholar.google.com.hk/citations?user=-P9LwcgAAAAJ&amp;hl=en" target="_blank" rel="noopener">Gao Huang</a></p>
+					<p>Sep. 2025 - Future</p>
+				</td>
+			</tr>
+			<tr class="education-entry">
+				<td class="education-logo-cell">
+					<img class="education-logo" src="./education/nankai.png" alt="Nankai University">
+				</td>
+				<td>
+					<p><b>Nankai University</b></p>
+					<p>Bachelor, School of Artificial Intelligence</p>
+					<p>Sep. 2021 - Jun. 2025</p>
+					<p>Overall rank: 1/132</p>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<h2 class="section-heading">Visitors</h2>
+	<div class="visitor-map">
+		<!-- Replace the d=... value with your own ClustrMaps token after creating one for your domain. -->
+		<script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=EnM8Dv_R4BwPuoOt8KTjf5RG332ti_DNDbS9_-0YE78&amp;cl=ffffff&amp;w=a"></script>
+	</div>
+
+	<div id="footer">
+		<div id="footer-text"></div>
+	</div>
+
+	<p style="text-align: center;">&copy; Teng Wang</p>
+
+	<script type="text/javascript">
+		(function () {
+			var layout = document.getElementById("layout-content");
+			var headings = Array.prototype.slice.call(document.querySelectorAll(".section-heading"));
+			if (!headings.length) {
+				return;
+			}
+
+			function clearFocusHeading() {
+				for (var i = 0; i < headings.length; i++) {
+					headings[i].classList.remove("section-focus");
+				}
+			}
+
+			function setFocusHeadingByMouse(event) {
+				if (!layout) {
+					return;
+				}
+
+				var footer = document.getElementById("footer");
+				if (footer) {
+					var footerRect = footer.getBoundingClientRect();
+					if (event.clientY >= footerRect.top) {
+						clearFocusHeading();
+						return;
+					}
+				}
+
+				var hoverY = window.scrollY + event.clientY;
+				var focusIndex = -1;
+
+				for (var i = 0; i < headings.length; i++) {
+					var currentTop = headings[i].offsetTop;
+					var nextTop = i < headings.length - 1 ? headings[i + 1].offsetTop : (footer ? footer.offsetTop : document.body.scrollHeight);
+
+					if (hoverY >= currentTop && hoverY < nextTop) {
+						focusIndex = i;
+						break;
+					}
+				}
+
+				for (var j = 0; j < headings.length; j++) {
+					if (j === focusIndex) {
+						headings[j].classList.add("section-focus");
+					} else {
+						headings[j].classList.remove("section-focus");
+					}
+				}
+			}
+
+			function setActiveHeading() {
+				var anchorY = window.scrollY + window.innerHeight * 0.3;
+				var activeIndex = 0;
+
+				for (var i = 0; i < headings.length; i++) {
+					var currentTop = headings[i].offsetTop;
+					var nextTop = i < headings.length - 1 ? headings[i + 1].offsetTop : document.body.scrollHeight;
+
+					if (anchorY >= currentTop && anchorY < nextTop) {
+						activeIndex = i;
+						break;
+					}
+
+					if (anchorY >= currentTop) {
+						activeIndex = i;
+					}
+				}
+
+				for (var j = 0; j < headings.length; j++) {
+					if (j === activeIndex) {
+						headings[j].classList.add("section-active");
+					} else {
+						headings[j].classList.remove("section-active");
+					}
+				}
+			}
+
+			if (layout) {
+				layout.addEventListener("mousemove", setFocusHeadingByMouse);
+				layout.addEventListener("mouseleave", clearFocusHeading);
+			}
+
+			window.addEventListener("scroll", setActiveHeading, { passive: true });
+			window.addEventListener("resize", setActiveHeading);
+			window.addEventListener("load", setActiveHeading);
+			setActiveHeading();
+		})();
+	</script>
+</div>
+</body>
+</html>
